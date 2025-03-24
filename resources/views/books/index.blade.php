@@ -130,7 +130,7 @@
                                 <th>@lang('publisher.publisher_name')</th>
                                 <th>@lang('book.isbn')</th>
                                 <th>@lang('category.category_name')</th>
-                                <th>@lang('panel.status')</th> <!-- Ödünç Durumu Eklendi -->
+                                <th>@lang('panel.status')</th>
                                 <th>@lang('panel.operations')</th>
                             </tr>
                         </thead>

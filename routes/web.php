@@ -8,23 +8,21 @@ use App\Http\Controllers\Admin\LoanController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\ReaderController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->middleware('guest')->name('password.request');
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->middleware('guest')->name('password.email');
-Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->middleware('guest')->name('password.reset');
-Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->middleware('guest')->name('password.update');
+Route::get('/forgot-password', [AuthController::class, 'showLinkRequestForm'])->middleware('guest')->name('password.request');
+Route::post('/forgot-password', [AuthController::class, 'sendResetLinkEmail'])->middleware('guest')->name('password.email');
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm'])->middleware('guest')->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'reset'])->middleware('guest')->name('password.update');
 
-Route::get('/register', [RegisterController::class, 'registerPage'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/index', [IndexController::class, 'index'])->name("admin.index");

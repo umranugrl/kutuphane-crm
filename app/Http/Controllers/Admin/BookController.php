@@ -23,7 +23,7 @@ class BookController extends Controller
             ->leftJoin('loans as l', function ($join) {
                 $join->on('books.id', '=', 'l.book_id')
                     ->whereRaw('l.id = (SELECT MAX(loans.id) FROM loans WHERE loans.book_id = books.id)');
-            }) // Sadece en son loan kaydını alıyoruz
+            }) // Sadece en son ödünç alınan kaydını max ile alıyoruz
             ->select('books.*', 'l.status as loan_status')
             ->orderBy('books.title', 'asc');
 

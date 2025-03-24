@@ -42,12 +42,12 @@ class ProfileController extends Controller
 
         if ($request->hasFile('profile_image')) {
             $image     = $request->file('profile_image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imageName = time() . '.' . $image->extension();
             $image->move(public_path('images/profile'), $imageName);
             $user->profile_image = 'images/profile/' . $imageName;
         }
         
         $user->save();
-        return redirect()->route('profile.edit');
+        return redirect()->route('profile.edit')->with('success', 'Profiliniz başarıyla güncellendi.');;
     }
 }

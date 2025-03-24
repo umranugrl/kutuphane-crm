@@ -24,7 +24,7 @@ class LoanDueNotification extends Notification
     public function toDatabase()
     {
         return [
-            'message'          => "📢 Okuyucu {$this->loan->reader->reader_full_name}, '{$this->loan->book->title}' kitabı için son 1 gün!",
+            'message'          => " Okuyucu {$this->loan->reader->reader_full_name}, '{$this->loan->book->title}' kitabı için son 1 gün!",
             'loan_id'          => $this->loan->id,
             'reader_full_name' => $this->loan->reader->reader_full_name,
             'title'            => $this->loan->book->title,

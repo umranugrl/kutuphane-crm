@@ -26,25 +26,29 @@
                                 <input type="hidden" name="token" value="{{ $token }}">
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" name="email" placeholder="E-posta" value="{{ old('email') }}" required autofocus>
+                                    <input type="email" class="form-control form-control-lg" name="email"
+                                        placeholder="E-posta" required>
                                     @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="password" placeholder="Yeni Şifre" required>
+                                    <input type="password" class="form-control form-control-lg" name="password"
+                                        placeholder="Yeni Şifre" required>
                                     @error('password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="password_confirmation" placeholder="Şifreyi Tekrar Girin" required>
+                                    <input type="password" class="form-control form-control-lg" name="password_confirmation"
+                                        placeholder="Şifreyi Tekrar Girin" required>
                                 </div>
 
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                                    <button type="submit"
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
                                         Şifremi Sıfırla
                                     </button>
                                 </div>
