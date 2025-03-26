@@ -89,9 +89,11 @@
                                             <select name="status" class="form-control">
                                                 <option value="">Seçiniz</option>
                                                 <option value="available" @if (isset($searchStatus) && $searchStatus == 'available') selected @endif>
-                                                    @lang('loan.available')</option>
+                                                    @lang('loan.available')
+                                                </option>
                                                 <option value="borrowed" @if (isset($searchStatus) && $searchStatus == 'borrowed') selected @endif>
-                                                    @lang('loan.borrowed')</option>
+                                                    @lang('loan.borrowed')
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -115,6 +117,9 @@
                     <div style="text-align: right">
                         <a href="{{ route('book.create') }}" class="btn btn-success">
                             <em class="mdi mdi-plus-box">@lang('book.new_book_add')</em>
+                        </a>
+                        <a href="{{ route('book.deleted') }}" class="btn btn-warning">
+                            <em class="mdi mdi-delete"></em>
                         </a>
                     </div>
                 </div>

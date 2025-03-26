@@ -12,6 +12,10 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return redirect('/admin/index');
+});
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -62,6 +66,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}', [BookController::class, 'edit'])->name("book.edit");
         Route::post('/update/{id}', [BookController::class, 'update'])->name("book.update");
         Route::get('/delete/{id}', [BookController::class, 'delete'])->name("book.delete");
+        Route::get('/restore/{id}', [BookController::class, 'restore'])->name("book.restore");
+        Route::get('/deleted', [BookController::class, 'deletedBooks'])->name("book.deleted");
+        Route::get('/books/force-delete/{id}', [BookController::class, 'forceDelete'])->name('book.forceDelete');
         Route::post('/author-create', [BookController::class, 'authorCreate'])->name("book.authorCreate");
         Route::post('/publisher-create', [BookController::class, 'publisherCreate'])->name("book.publisherCreate");
         Route::post('/category-create', [BookController::class, 'categoryCreate'])->name("book.categoryCreate");

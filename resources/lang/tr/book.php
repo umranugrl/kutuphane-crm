@@ -9,6 +9,7 @@ return[
     'author_full_name' => 'Yazar Adı',
     'year' =>'Yıl',
     'isbn' => 'ISBN',
+    'deleted' => 'Mevcut Değil',
     'select_category' => 'Kategori Seç',
     'select_author' => 'Yazar Seç',
     'select_publisher' => 'Yayın Evi Seç',

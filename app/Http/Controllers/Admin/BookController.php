@@ -45,9 +45,11 @@ class BookController extends Controller
 
         if ($searchStatus !== null) {
             if ($searchStatus == 'borrowed') {
-                $books->where('l.status', 'borrowed'); // Ödünç alınan kitapları filtrele
+                $books->where('l.status', 'borrowed'); // Ödünç alınanlar
             } elseif ($searchStatus == 'available') {
-                $books->whereNull('l.status')->orWhere('l.status', '!=', 'borrowed'); // Müsait olan kitaplar
+                $books->where(function ($query) {
+                    $query->whereNull('l.status')->orWhere('l.status', '!=', 'borrowed');
+                });
             }
         }
 
@@ -129,7 +131,29 @@ class BookController extends Controller
         $book = Book::find($id);
         $book->delete();
 
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('success', 'Kitap başarıyla silindi!');
+    }
+
+    public function restore($id)
+    {
+        $book = Book::onlyTrashed()->find($id);
+        $book->restore();
+
+        return redirect()->route('book.deleted')->with('success', 'Kitap başarıyla geri yüklendi!');
+    }
+
+    public function deletedBooks()
+    {
+        $books = Book::onlyTrashed()->paginate();
+        return view('books.deleted', compact('books'));
+    }
+
+    public function forceDelete($id)
+    {
+        $book = Book::onlyTrashed()->find($id);
+        $book->forceDelete();                     
+
+        return redirect()->route('book.deleted')->with('success', 'Kitap kalıcı olarak silindi!');
     }
 
     public function categoryCreate(Request $request)

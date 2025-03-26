@@ -19,17 +19,17 @@ return new class extends Migration
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-        
+
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
 
-            $table->unsignedBigInteger('publisher_id')->nullable(); // Yayın evi ilişkisi
+            $table->unsignedBigInteger('publisher_id')->nullable();
             $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('set null');
-        
+
             $table->string('title');
-            $table->integer('year'); // Yıl integer olmalı
-            $table->string('isbn', 13)->unique(); // ISBN benzersiz olmalı
-        
+            $table->integer('year');             
+            $table->string('isbn', 13)->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -39,6 +39,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::table('books', function(Blueprint $table) {
+            $table->dropSoftDeletes();
+        }); 
     }
 };
