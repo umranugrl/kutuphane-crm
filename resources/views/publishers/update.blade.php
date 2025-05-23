@@ -11,8 +11,8 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div style="text-align: right">
-                        <a href="{{ route('publisher.index') }}" class="btn btn-success"><i
-                                class="mdi mdi-arrow-left-bold-circle"></i></a>
+                        <a href="{{ route('publisher.index') }}" class="btn btn-secondary"><i
+                                class="mdi mdi-keyboard-backspace"></i></a>
                     </div>
                 </div>
                 <h4 class="card-title">@lang('publisher.publisher_edit')</h4>

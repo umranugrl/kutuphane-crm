@@ -35,11 +35,11 @@
                                     <td>{{ $author->death_date }}</td>
                                     <td>
                                         <a href="{{ route('author.edit', $author->id) }}" class="btn btn-primary">
-                                            <em class="mdi mdi-lead-pencil"></em>
+                                            <i class="mdi mdi-lead-pencil"></i>
                                         </a>
                                         <a href="{{ route('author.delete', $author->id) }}"
                                             onclick="return confirm('Silmek istiyor musunuz?');" class="btn btn-danger">
-                                            <em class="mdi mdi-delete"></em>
+                                            <i class="mdi mdi-delete"></i>
                                         </a>
                                     </td>
                                 </tr>

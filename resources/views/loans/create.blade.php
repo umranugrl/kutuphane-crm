@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <div style="text-align: right">
                         <a href="{{ route('loan.index') }}" class="btn btn-secondary">
-                            <i class="mdi mdi-arrow-left-bold-circle"></i>
+                            <i class="mdi mdi-keyboard-backspace"></i>
                         </a>
                     </div>
                 </div>

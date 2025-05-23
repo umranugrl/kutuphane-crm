@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('/update/{id}', [BookController::class, 'update'])->name("book.update");
         Route::get('/delete/{id}', [BookController::class, 'delete'])->name("book.delete");
         Route::post('/excel-upload', [BookController::class, 'excel_upload'])->name("book.excel_upload");
+        Route::get('/excel_export', [BookController::class, 'excel_export'])->name("book.excel_export");
         Route::get('/restore/{id}', [BookController::class, 'restore'])->name("book.restore");
         Route::get('/deleted', [BookController::class, 'deletedBooks'])->name("book.deleted");
         Route::get('/books/force-delete/{id}', [BookController::class, 'forceDelete'])->name('book.forceDelete');

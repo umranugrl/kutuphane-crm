@@ -36,11 +36,11 @@
                                     <td>{{ $reader->phone }}</td>
                                     <td>{{ $reader->address }}</td>
                                     <td>
-                                        <a href="{{ route('reader.edit', $reader->id) }}" class="btn btn-primary"><em
-                                                class="mdi mdi-lead-pencil"></em></a>
+                                        <a href="{{ route('reader.edit', $reader->id) }}" class="btn btn-primary"><i
+                                                class="mdi mdi-lead-pencil"></i></a>
                                         <a href="{{ route('reader.delete', $reader->id) }}"
-                                            onclick="return confirm('Silmek istiyor musunuz?');" class="btn btn-danger"><em
-                                                class="mdi mdi-delete"></em></a>
+                                            onclick="return confirm('Silmek istiyor musunuz?');" class="btn btn-danger"><i
+                                                class="mdi mdi-delete"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

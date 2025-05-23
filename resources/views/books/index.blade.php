@@ -116,16 +116,21 @@
                 <div class="col-md-12">
                     <div style="text-align: right">
                         <a href="{{ route('book.create') }}" class="btn btn-success">
-                            <em class="mdi mdi-plus-box">@lang('book.new_book_add')</em>
+                            <i class="mdi mdi-plus-box"></i>
                         </a>
-                        <a href="{{ route('book.deleted') }}" title={{__('panel.deleted')}} class="btn btn-warning">
-                            <em class="mdi mdi-delete"></em>
+                        <a href="{{ route('book.deleted') }}" title={{ __('panel.deleted') }} class="btn btn-warning">
+                            <i class="mdi mdi-delete"></i>
                         </a>
-                        <button type="button" class="btn btn-inverse-warning btn-icon ml-2 btn-excel" data-toggle="modal" data-target="#book-excel-import" title="{{ __('panel.excel_import') }}"><i class="mdi mdi-file-import"></i></button>
+                        <button type="button" class="btn btn-info btn-excel" data-toggle="modal"
+                            data-target="#book-excel-import" title={{ __('panel.excel_import') }}><i
+                                class="mdi mdi-file-import"></i></button>
+                        <a href="{{ route('book.excel_export') }}" title={{ __('panel.excel_export') }}
+                            class="btn btn-primary"><i class="mdi mdi-file-export"></i>
+                        </a>
                     </div>
                 </div>
 
-                
+
                 <h4 class="card-title">@lang('book.books')</h4>
 
                 <div class="table-responsive">
@@ -163,11 +168,11 @@
 
                                     <td>
                                         <a href="{{ route('book.edit', $book->id) }}" class="btn btn-primary">
-                                            <em class="mdi mdi-lead-pencil"></em>
+                                            <i class="mdi mdi-lead-pencil"></i>
                                         </a>
                                         <a href="{{ route('book.delete', $book->id) }}"
                                             onclick="return confirm('Silmek istiyor musunuz?');" class="btn btn-danger">
-                                            <em class="mdi mdi-delete"></em>
+                                            <i class="mdi mdi-delete"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -194,13 +199,14 @@
                 </div>
                 <div class="modal-body">
                     <a href="{{ asset('ornek_sablon.xlsx') }}" download>@lang('panel.download_draft')</a>
-                    <form method="POST" action="{{ route('book.excel_upload') }}" id="book-import-form" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('book.excel_upload') }}" id="book-import-form"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="col-md-3">
                                 <label class="mainlabel" style="margin:16px;">{{ __('panel.warm') }}</label>
                             </div>
-    
+
                             <div class="col-md-3">
                                 <input type="file" name="excel_file" class="form-control" />
                             </div>

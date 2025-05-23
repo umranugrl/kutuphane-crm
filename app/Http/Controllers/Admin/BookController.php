@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\BooksExport;
 use App\Http\Controllers\Controller;
 use App\Imports\BookImport;
 use App\Models\Author;
@@ -138,6 +139,11 @@ class BookController extends Controller
         Excel::import(new BookImport, $request->file('excel_file'));
 
         return redirect()->route('book.index');
+    }
+
+    public function excel_export() 
+    {
+        return Excel::download(new BooksExport, 'books.xlsx');
     }
 
     public function delete($id)

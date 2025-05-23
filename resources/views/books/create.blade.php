@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <div style="text-align: right">
                         <a href="{{ route('book.index') }}" class="btn btn-secondary"><i
-                                class="mdi mdi-arrow-left-bold-circle"></i></a>
+                                class="mdi mdi-keyboard-backspace"></i></a>
                     </div>
                 </div>
                 <h4 class="card-title">@lang('book.new_book_add')</h4>

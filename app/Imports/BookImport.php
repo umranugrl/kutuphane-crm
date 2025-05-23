@@ -42,7 +42,8 @@ class BookImport implements ToModel,WithHeadingRow
             ['publisher_name' => $row['yayin_evi']],
             ['user_id' => auth()->id()] 
         );
-        $category = Category::firstOrCreate(['category_name' => $row['kategori_adi']],
+        $category = Category::firstOrCreate(
+            ['category_name' => $row['kategori_adi']],
             ['user_id' => auth()->id(),
             'slug' => Str::slug($row['kategori_adi'])]
         );

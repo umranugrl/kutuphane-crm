@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <div style="text-align: right">
                         <a href="{{ route('book.index') }}" class="btn btn-primary">
-                            <em class="mdi mdi-keyboard-return"></em>
+                            <i class="mdi mdi-keyboard-return"></i>
                         </a>
                     </div>
                 </div>
@@ -58,11 +58,11 @@
 
                                     <td>
                                         <a href="{{ route('book.restore', $book->id) }}" class="btn btn-warning">
-                                            <em class="mdi mdi-restore"></em></a>
+                                            <i class="mdi mdi-restore"></i></a>
                                         <a href="{{ route('book.forceDelete', $book->id) }}"
                                             onclick="return confirm('Bu kitabı kalıcı olarak silmek istediğinize emin misiniz?');"
                                             class="btn btn-danger">
-                                            <em class="mdi mdi-delete-forever"></em>
+                                            <i class="mdi mdi-delete-forever"></i>
                                         </a>
                                     </td>
                                 </tr>
