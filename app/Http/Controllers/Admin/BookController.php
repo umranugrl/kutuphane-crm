@@ -2,12 +2,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\BookImport;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
@@ -122,6 +125,17 @@ class BookController extends Controller
             'category_id'  => $request->category_id,
             'publisher_id' => $request->publisher_id,
         ]);
+
+        return redirect()->route('book.index');
+    }
+
+    public function excel_upload(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|mimes:xlsx,xlsm,xlsb,xltx,xltm,xls|max:50014',
+        ]);
+
+        Excel::import(new BookImport, $request->file('excel_file'));
 
         return redirect()->route('book.index');
     }

@@ -118,11 +118,14 @@
                         <a href="{{ route('book.create') }}" class="btn btn-success">
                             <em class="mdi mdi-plus-box">@lang('book.new_book_add')</em>
                         </a>
-                        <a href="{{ route('book.deleted') }}" class="btn btn-warning">
+                        <a href="{{ route('book.deleted') }}" title={{__('panel.deleted')}} class="btn btn-warning">
                             <em class="mdi mdi-delete"></em>
                         </a>
+                        <button type="button" class="btn btn-inverse-warning btn-icon ml-2 btn-excel" data-toggle="modal" data-target="#book-excel-import" title="{{ __('panel.excel_import') }}"><i class="mdi mdi-file-import"></i></button>
                     </div>
                 </div>
+
+                
                 <h4 class="card-title">@lang('book.books')</h4>
 
                 <div class="table-responsive">
@@ -175,6 +178,39 @@
                     <div class="d-flex justify-content-center">
                         {{ $books->appends(request()->query())->links() }}
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="book-excel-import">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('panel.excel_import') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <a href="{{ asset('ornek_sablon.xlsx') }}" download>@lang('panel.download_draft')</a>
+                    <form method="POST" action="{{ route('book.excel_upload') }}" id="book-import-form" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label class="mainlabel" style="margin:16px;">{{ __('panel.warm') }}</label>
+                            </div>
+    
+                            <div class="col-md-3">
+                                <input type="file" name="excel_file" class="form-control" />
+                            </div>
+                            <div err-name="excel_file"></div>
+                        </div>
+                        <div success-text></div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success mb-2">{{ __('panel.save') }}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
