@@ -43,6 +43,14 @@
                                     <a href="{{ route('password.request') }}" class="auth-link text-black">@lang('auth.forgot_your_password')</a>
                                 </div>
 
+                               <div class="g-recaptcha" data-sitekey="{{ config('app.recaptcha.key') }}"></div>
+                                    @error('g-recaptcha-response')
+                                        <span class="text-danger small">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+
+
                                 <div class="mt-3">
                                     <button type="submit"
                                         class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">@lang('auth.login')</button>
@@ -63,4 +71,5 @@
 @endsection
 
 @section('js')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endsection

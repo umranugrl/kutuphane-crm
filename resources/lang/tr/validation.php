@@ -14,6 +14,9 @@ return [
             'max' => 'Yıl alanı en fazla 2099 olabilir.',
             'min' => 'Yıl alanı en az 1000 olmalıdır.',
         ],
+        'g-recaptcha-response' => [
+        'required' => 'Lütfen reCAPTCHA doğrulamasını tamamlayın.',
+        ],
     ],
     'unique'     => ':attribute zaten kullanılıyor.',
     'exists'     => 'Seçilen :attribute geçerli değil.',

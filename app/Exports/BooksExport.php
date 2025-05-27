@@ -12,7 +12,14 @@ class BooksExport implements FromCollection, WithHeadings, WithMapping
    
     public function collection()
     {
-        return Book::with(['author', 'publisher', 'category','loans'])->get();
+        return Book::leftJoin('loans', function ($join) {
+                $join->on('books.id', '=', 'loans.book_id')
+                    ->where('loans.status', '=', 'borrowed');
+            })
+            ->where('loans.id' , null) 
+            ->with(['author', 'publisher', 'category'])
+            ->select('books.*') 
+            ->get();
     }
 
     public function headings(): array
@@ -24,8 +31,8 @@ class BooksExport implements FromCollection, WithHeadings, WithMapping
 
     public function map($book): array
     {
-        $lastLoan = $book->loans->sortByDesc('loan_date')->first();
-        $status = ($lastLoan && $lastLoan->status === 'borrowed') ? 'Ödünç Alındı' : 'Uygun';
+        // $lastLoan = $book->loans->sortByDesc('loan_date')->first();
+        // $status = ($lastLoan && $lastLoan->status === 'borrowed') ? 'Ödünç Alındı' : 'Uygun';
 
         return [
             $book->title,
@@ -34,7 +41,7 @@ class BooksExport implements FromCollection, WithHeadings, WithMapping
             optional($book->publisher)->publisher_name ?? '-',
             $book->isbn,
             optional($book->category)->category_name ?? '-',
-            $status,
+            $status ?? 'Uygun',
         ];
     }
 }

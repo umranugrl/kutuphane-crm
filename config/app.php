@@ -30,6 +30,12 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'recaptcha' => [
+        'key' => env('GOOGLE_RECAPTCHA_KEY'),
+        'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+        'site' => env('GOOGLE_RECAPTCHA_SITE'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

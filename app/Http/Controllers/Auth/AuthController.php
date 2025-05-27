@@ -33,8 +33,10 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email'    => ['required', 'email'],
             'password' => ['required'],
+            'g-recaptcha-response' => ['required']
         ]);
 
+        $credentials = $request->only('email', 'password');
         $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
